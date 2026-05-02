@@ -19,6 +19,10 @@
             --accent-glow: 0 0 15px rgba(56, 189, 248, 0.4);
         }
 
+        html {
+            scroll-padding-top: 80px;
+        }
+        
         /* --- GLOBAL STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
@@ -109,6 +113,99 @@
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
         #modal-img { max-width: 90vw; max-height: 80vh; object-fit: contain; display: block; margin: 0 auto; border-radius: 10px; }
         #modal-text { color: white; text-align: center; margin-top: 15px; font-weight: bold; font-size: 1.2rem; }
+        .menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Mobile Nav */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 2rem 0;
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+        @media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-p {
+        font-size: 0.9rem;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+        @media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-img-wrapper {
+        height: 180px;
+    }
+}
+        @media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card {
+        padding: 1.5rem;
+    }
+}
+        @media (max-width: 768px) {
+    .cert-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+        @media (max-width: 768px) {
+    .contact-form {
+        width: 100%;
+    }
+}
+        @media (max-width: 768px) {
+    section {
+        padding: 70px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
 
         @media (max-width: 900px) { .hero-content { flex-direction: column; text-align: center; } .profile-img { width: 200px; height: 200px; } .hero-h1 { font-size: 3rem; } .cert-list { grid-template-columns: 1fr; } }
     </style>
@@ -126,6 +223,9 @@
                 <li><a href="#certificates">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </nav>
 
@@ -274,7 +374,9 @@
     </div>
 
     <script>
-
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
         (function() {
             // Replace with your actual Public Key from EmailJS Account
             emailjs.init("xAvJ55-C91FnXxKD4");
